@@ -3,6 +3,8 @@ local options = {
     lua = { "stylua" },
     -- css = { "prettier" },
     -- html = { "prettier" },
+    bash = { "shfmt" },
+    sh = { "shfmt" },
   },
 
   -- format_on_save = {
