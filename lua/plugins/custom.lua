@@ -160,8 +160,29 @@ return {
     ---@module "auto-session"
     ---@type AutoSession.Config
     opts = {
-      suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+      suppressed_dirs = { '~/', '~/code', '~/Downloads', '/' },
       -- log_level = 'debug',
     }
+  },
+
+  {
+    "folke/zen-mode.nvim",
+    cmd = "ZenMode",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      window = {
+        options = {
+          -- signcolumn = "no", -- disable signcolumn
+          number = true, -- disable number column
+          -- relativenumber = false, -- disable relative numbers
+          cursorline = true, -- disable cursorline
+          -- cursorcolumn = false, -- disable cursor column
+          -- foldcolumn = "0", -- disable fold column
+          -- list = false, -- disable whitespace characters
+        },
+      },
+    },
   },
 }
