@@ -34,15 +34,6 @@ return {
   },
 
   {
-    "gbprod/substitute.nvim",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
-  },
-
-  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       {
@@ -141,21 +132,6 @@ return {
     config = function()
       require("copilot_cmp").setup()
     end,
-  },
-
-  {
-    'echasnovski/mini.ai',
-    version = false,
-    event = 'VeryLazy',
-  },
-
-  {
-    'stevearc/oil.nvim',
-    cmd = { "Oil" },
-    opts = {
-      default_file_explorer = true,
-    },
-    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
   {
