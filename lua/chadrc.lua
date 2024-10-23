@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-	theme = "onedark",
+	theme = "github_light",
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },
@@ -28,16 +28,24 @@ M.base46 = {
 
 M.ui = {
   statusline = {
-    theme = "default", -- default/vscode/vscode_colored/minimal
+    theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
-    separator_style = "arrow",
+    separator_style = "default",
     -- order = nil,
     -- modules = nil,
   },
 
   tabufline = {
     lazyload = false,
+  },
+
+  cmp = {
+    lspkind_text = true,
+    style = "default", -- default/flat_light/flat_dark/atom/atom_colored
+    format_colors = {
+      tailwind = true,
+    },
   },
 }
 
