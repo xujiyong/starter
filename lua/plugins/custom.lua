@@ -30,7 +30,11 @@ return {
   {
     "chrisgrieser/nvim-various-textobjs",
     event = "UIEnter",
-    opts = { useDefaultKeymaps = true },
+    opts = { 
+      keymaps = {
+        useDefaults = true
+      }
+    },
   },
 
   {
