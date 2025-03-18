@@ -50,6 +50,16 @@ return {
       options.mapping["<Right>"] = cmp.mapping(cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }), { "c" })
       options.mapping["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s", "c" })
       options.mapping["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s", "c" })
+      options.mapping['<Esc>'] = cmp.mapping({
+        c = function()
+          if cmp.visible() then
+            cmp.close()
+          else
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-c>', true, true, true), 'n', true)
+          end
+        end
+      })
+
       options.sources = {
         { name = "copilot" },
         { name = "nvim_lsp" },
