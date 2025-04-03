@@ -42,6 +42,7 @@ return {
     dependencies = {
       {
         "zbirenbaum/copilot-cmp",
+        "octaltree/cmp-look"
       }
     },
     opts = function()
@@ -81,6 +82,16 @@ return {
         { name = "buffer" },
         { name = "nvim_lua" },
         { name = "path" },
+        {
+          name = 'look',
+          keyword_length = 2,
+          option = {
+            convert_case = true,
+            loud = true,
+            -- sudo pacman -S words to get following file
+            -- dict = '/usr/share/dict/words'
+          }
+        }
       }
       return options
     end,
