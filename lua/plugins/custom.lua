@@ -50,15 +50,29 @@ return {
       options.mapping["<Right>"] = cmp.mapping(cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }), { "c" })
       options.mapping["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s", "c" })
       options.mapping["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s", "c" })
-      options.mapping['<Esc>'] = cmp.mapping({
-        c = function()
-          if cmp.visible() then
-            cmp.close()
-          else
-            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-c>', true, true, true), 'n', true)
-          end
+      options.mapping['<Esc>'] = cmp.mapping(function()
+        if cmp.visible() then
+          cmp.close()
+        else
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-c>', true, true, true), 'n', true)
         end
-      })
+      end, { "c" })
+
+      local has_words_before = function()
+        if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+      end
+
+      options.mapping["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() and has_words_before() then
+          cmp.select_next_item()
+        elseif require("luasnip").expand_or_jumpable() then
+          require("luasnip").expand_or_jump()
+        else
+          fallback()
+        end
+      end, { "i", "s" })
 
       options.sources = {
         { name = "copilot" },
