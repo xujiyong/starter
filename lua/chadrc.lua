@@ -70,6 +70,6 @@ M.mason = {
 --       tabufline = {
 --          lazyload = false
 --      }
---}
+-- }
 
 return M
